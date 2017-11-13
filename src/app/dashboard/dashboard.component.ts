@@ -1,17 +1,15 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Hero } from '../hero';
-//import { HEROES } from '../mock-heroes';
-
 import { HeroService } from '../hero.service';
 
 @Component({
-  selector: 'app-heroes',
-  templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
   //, encapsulation: ViewEncapsulation.None
 })
-export class HeroesComponent implements OnInit {
-  heroes: Hero[];
+export class DashboardComponent implements OnInit {
+  heroes: Hero[] = [];
 
   constructor(private heroService: HeroService) { }
 
@@ -21,8 +19,7 @@ export class HeroesComponent implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes);
+      .subscribe(heroes => this.heroes = heroes.slice(1,5));
   }
 
 }
-
